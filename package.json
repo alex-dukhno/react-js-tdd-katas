@@ -1,0 +1,33 @@
+{
+  "name": "react-js-tdd-katas",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-scripts": "2.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test:unit": "react-scripts test",
+    "eject": "react-scripts eject",
+    "test:end-to-end": "start-server-and-test start http://localhost:3000 cypress",
+    "cypress": "cypress run --browser chrome"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "cypress": "^3.1.1",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "start-server-and-test": "^1.7.9"
+  }
+}
