@@ -10,23 +10,23 @@ should();
 
 describe('todo list', () => {
   it('renders an empty todo list', () => {
-    const list = shallow(<TodoList/>);
+    const list = shallow(<TodoList />);
 
-    list.find('div[id="todo-list"]').should.exist;
+    list.find('#todo-list').should.exist;
     list.find('li').should.have.length(0);
   });
 
   it('submit a task', () => {
-    const list = shallow(<TodoList/>);
+    const list = shallow(<TodoList />);
 
-    const taskName = list.find('input[id="taskName"]');
-    const submitButton = list.find('button[id="submitTask"]');
+    const taskName = list.find('#taskName');
+    const submitButton = list.find('#submitTask');
 
     taskName.simulate('change', { target: { value: 'task name' } } );
     submitButton.simulate('click');
 
     const tasks = list.find('li');
     tasks.should.have.length(1);
-    tasks.map(t => t.text()).should.eql(['task name']);
+    tasks.map(task => task.text()).should.eql(['task name']);
   });
 });
