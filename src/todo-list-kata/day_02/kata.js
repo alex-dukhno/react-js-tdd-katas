@@ -2,15 +2,20 @@ import React from 'react';
 
 class TodoList extends React.Component {
   state = {
-    tasks: []
+    tasks: [],
+    taskName: ''
   };
 
   onChange = (e) => {
+    e.preventDefault();
+
     const val = e.target.value;
     this.setState((prev, props) => ({ taskName: val }));
   };
 
-  onTaskSubmit = () => {
+  onTaskSubmit = (e) => {
+    e.preventDefault();
+
     this.setState((prev, props) => {
       const tasks = prev.tasks;
       tasks.push(prev.taskName);
@@ -22,9 +27,9 @@ class TodoList extends React.Component {
   };
 
   render() {
-    const tasks = this.state.tasks.map((task, index) => (<li id={'key-'+index} key={index}>{task}</li>));
+    const tasks = this.state.tasks.map((task, index) => <Task key={index} title={task} />);
     return (
-      <div id='todo-list'>
+      <form id='todo-list'>
         <ul>{tasks}</ul>
         <input
           id='task-name'
@@ -36,8 +41,14 @@ class TodoList extends React.Component {
           id='submit-task'
           onClick={this.onTaskSubmit}
         />
-      </div>
+      </form>
     )
+  }
+}
+
+class Task extends React.Component {
+  render() {
+    return <li key={this.props.id}>{this.props.title}</li>
   }
 }
 

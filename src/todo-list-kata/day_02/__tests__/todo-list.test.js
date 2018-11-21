@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, configure } from 'enzyme';
+import { mount, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { should } from 'chai';
 
@@ -11,17 +11,22 @@ should();
 
 describe('todo list', () => {
   let list;
+  let taskName;
+  let submitTask;
 
   beforeEach(() => {
-    list = shallow(<TodoList />);
+    list = mount(<TodoList />);
+    taskName = list.find('#task-name');
+    submitTask = list.find('#submit-task');
   });
 
-  it('submits a task to a list', () => {
-    const taskName = list.find('#task-name');
-    const submitTask = list.find('#submit-task');
-
-    taskName.simulate('change', { target: { value: 'task name' } });
+  const createTask = (taskTitle) => {
+    taskName.simulate('change', { target: { value: taskTitle } });
     submitTask.simulate('click');
+  }
+
+  it('submits a task to a list', () => {
+    createTask('task name');
 
     const tasks = list.find('li');
 
@@ -30,17 +35,9 @@ describe('todo list', () => {
   });
 
   it('submits many tasks to a list', () => {
-    const taskName = list.find('#task-name');
-    const submitTask = list.find('#submit-task');
-
-    taskName.simulate('change', { target: { value: 'task name #1' } });
-    submitTask.simulate('click');
-
-    taskName.simulate('change', { target: { value: 'task name #2' } });
-    submitTask.simulate('click');
-
-    taskName.simulate('change', { target: { value: 'task name #3' } });
-    submitTask.simulate('click');
+    createTask('task name #1');
+    createTask('task name #2');
+    createTask('task name #3');
 
     const tasks = list.find('li');
 
