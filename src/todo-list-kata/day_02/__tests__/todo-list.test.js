@@ -23,7 +23,7 @@ describe('todo list', () => {
   const createTask = (taskTitle) => {
     taskName.simulate('change', { target: { value: taskTitle } });
     submitTask.simulate('click');
-  }
+  };
 
   it('submits a task to a list', () => {
     createTask('task name');

@@ -2,7 +2,7 @@ describe('todo list end to end', () => {
   const createTask = (taskName) => {
     cy.get('#task-name').type(taskName);
     cy.get('#submit-task').click();
-  }
+  };
 
   it('renders an empty todo list', () => {
     cy.visit('/');

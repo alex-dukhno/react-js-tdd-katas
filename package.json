@@ -5,15 +5,18 @@
   "dependencies": {
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "react-scripts": "2.1.1",
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "test": "CI=true npm run test:unit && npm run test:end-to-end",
     "test:unit": "react-scripts test",
     "eject": "react-scripts eject",
     "test:end-to-end": "start-server-and-test start http://localhost:3000 cypress",
-    "cypress": "cypress run --browser chrome"
+    "cypress": "cypress run --browser chrome",
+    "cypress:interactive": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
