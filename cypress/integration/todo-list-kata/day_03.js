@@ -7,7 +7,7 @@ describe('todo list', () => {
   });
 
   const submitTask = (taskTitle) => {
-    cy.get('input[data-cy-id="task-title"')
+    cy.get('input[data-cy-id="task-title"]')
       .type(taskTitle);
     cy.get('button[data-cy-id="submit-task"]')
       .click();
