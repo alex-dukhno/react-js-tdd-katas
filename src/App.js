@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import TodoList from './todo-list-kata/day_05/kata';
+import TodoList from './todo-list-kata/day_06/kata';
 
 class App extends Component {
   render() {
